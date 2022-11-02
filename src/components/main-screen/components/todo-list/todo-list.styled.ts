@@ -47,7 +47,7 @@ const TabBtn = styled.button.attrs({ type: 'button' })`
   letter-spacing: -0.02em;
   font-weight: 700;
 
-  color: ${({ theme }) => theme.color.whisper2};
+  color: ${({ theme }) => theme.color.whisper};
   background: transparent;
   border: none;
   cursor: pointer;
@@ -61,7 +61,7 @@ const TabBtn = styled.button.attrs({ type: 'button' })`
     border-bottom: 2px solid ${({ theme }) => theme.color.tangerine};
   }
 
-  ${({ isActive }) =>
+  ${({ isActive }: any) =>
     isActive &&
     css`
       span {
@@ -185,7 +185,7 @@ const QuestFeatureItem = styled.li`
 
   font-size: ${({ theme }) => theme.font.small};
   line-height: 144%;
-  color: ${({ theme }) => theme.color.whisper2};
+  color: ${({ theme }) => theme.color.whisper};
 
   &:not(:last-of-type) {
     padding-right: 13px;
