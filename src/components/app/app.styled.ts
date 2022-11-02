@@ -40,10 +40,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     font-size: ${({ theme }) => theme.font.base};
     line-height: 22.5px;
-    color: ${({ theme }) => theme.color.whisper};
+    color: ${({ theme }) => theme.color.gray};
     font-feature-settings: 'pnum' on, 'lnum' on;
 
-    background-color: ${({ theme }) => theme.color.nero};
+    background-color: ${({ theme }) => theme.color.whiteSmoke};
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

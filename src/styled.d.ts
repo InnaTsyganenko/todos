@@ -26,7 +26,7 @@ declare module 'styled-components' {
       tangerine: string;
       carrotOrange: string;
       eclipse: string;
-      pinkSwan: string;
+      whitePink: string;
     };
   }
 }

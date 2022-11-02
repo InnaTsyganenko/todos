@@ -1,10 +1,20 @@
-function MainScreen(): JSX.Element {
+import {
+  MainLayout,
+  PageTitle,
+  PageHeading,
+} from 'components/common/common';
+import { TodoList } from './components/components';
+import * as S from './main-screen.styled';
 
-  return (
-    <main className="container main-index"><img src="/img/svg/logo.svg" width="300" alt="Логотип проекта" style={{background: 'black'}}/>
-      <h1>todos</h1>
-    </main>
-  );
-}
+const MainScreen = () => (
+  <MainLayout>
+    <S.Main forwardedAs="main">
+      <PageHeading>
+        <PageTitle>todos</PageTitle>
+      </PageHeading>
+      <TodoList />
+    </S.Main>
+  </MainLayout>
+);
 
 export default MainScreen;
