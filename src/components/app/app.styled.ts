@@ -29,13 +29,12 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    height: 100%;
   }
 
   body {
     width: 100%;
-    height: 100%;
-
-    font-family: 'Raleway', Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: ${({ theme }) => theme.font.base};

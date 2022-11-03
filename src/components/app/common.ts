@@ -10,7 +10,7 @@ const appTheme: DefaultTheme = {
     medium: '24px',
     formsHeading: '32px',
     semilarge: '64px',
-    large: '92px',
+    large: '102px',
   },
   color: {
     white: '#FFFFFF',

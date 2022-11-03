@@ -1,15 +1,10 @@
-import {
-  PageTitle,
-  PageHeading,
-} from 'components/common/common';
+import { PageTitle } from 'components/common/common';
 import { TodoList } from './components/components';
 import * as S from './main-screen.styled';
 
 const MainScreen = () => (
   <S.Main forwardedAs="main">
-    <PageHeading>
-      <PageTitle>todos</PageTitle>
-    </PageHeading>
+    <PageTitle>todos</PageTitle>
     <TodoList />
   </S.Main>
 );

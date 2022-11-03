@@ -1,9 +1,19 @@
+import { PropsWithChildren } from 'react';
+import TodoInputField from '../todo-input-field/todo-input-field';
 import * as S from './todo-list.styled';
 
-const TodoList = () => (
-  <S.Tabs>
-    <S.TabTitle>dfdfg</S.TabTitle>
-  </S.Tabs>
+type TodoListProps = PropsWithChildren<{
+  children?: JSX.Element;
+}>;
+
+const TodoList = ({ children, ...props }: TodoListProps) => (
+  <>
+    <TodoInputField />
+    <S.Tabs>
+      <S.TabItem>jkjk</S.TabItem>
+      <S.TabBtn>qqqqqq</S.TabBtn>
+    </S.Tabs>
+  </>
 );
 
 

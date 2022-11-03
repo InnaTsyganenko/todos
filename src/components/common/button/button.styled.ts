@@ -23,6 +23,7 @@ const Button = styled.button`
   border: none;
   border-radius: 65px;
   cursor: pointer;
+  outline: 2px dashed green;
 
   &:focus,
   &:hover {
