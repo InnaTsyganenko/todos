@@ -3,31 +3,32 @@ import { Link } from 'components/common/common';
 
 const Tabs = styled.ul`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   margin: auto;
   padding: 0;
   list-style: none;
-  box-shadow: 0 0 2px 1px #eadcdb;
 `;
 
 const TabItem = styled.li`
   display: flex;
+  width: 100%;
+  padding: 1em;
   align-items: center;
-  min-height: 40px;
-  max-width: 190px;
-  margin-bottom: 20px;
+  margin: 0;
+  box-shadow:
+    0 7px 1px 0 ${({ theme }) => theme.color.whiteSmoke},
+    0 -1px 5px 0 ${({ theme }) => theme.color.whiteSmoke},
+    -2px 0 2px 0 #cbcbcb,
+    2px 0 3px 0 #cbcbcb,
+    0 -1px 1px 0 #eadcdb;
 
-  &:not(:last-of-type) {
-    padding-right: 40px;
-    margin-right: 39px;
-    border-right: 1px solid ${({ theme }) => theme.color.gray};
-  }
-
-  @media (max-width: 1110px) {
-    &:not(:last-of-type) {
-      padding-right: 30px;
-      margin-right: 29px;
-    }
+  &:last-of-type {
+    box-shadow:
+      0 -1px 5px 0 ${({ theme }) => theme.color.whiteSmoke},
+      -2px 0 2px 0 #cbcbcb,
+      2px 0 3px 0 #cbcbcb,
+      0 -1px 1px 0 #eadcdb;
   }
 `;
 

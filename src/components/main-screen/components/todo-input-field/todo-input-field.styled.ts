@@ -1,33 +1,58 @@
 import styled from 'styled-components';
 
-const InputField = styled.textarea`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
+const InputContainer = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: 10% 90%;
+
   margin-top: 1em;
-  padding: 0.5em;
-  box-shadow: 0 -1px 2px 1px #eadcdb;
-  border: none;
-  font-family: inherit;
+  box-shadow:
+    0 7px 1px 0 ${({ theme }) => theme.color.whiteSmoke},
+    0 -1px 5px 0 ${({ theme }) => theme.color.whiteSmoke},
+    -2px 0 2px 0 #cbcbcb,
+    2px 0 3px 0 #cbcbcb,
+    0 -1px 1px 0 #eadcdb;
+
   align-content: center;
   align-items: center;
-  vertical-align: middle;
+  background: ${({ theme }) => theme.color.white};
+
+  &::before {
+    content: '';
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 5%;
+    width: 21px;
+    height: 29px;
+    background: url("../img/arrow.svg");
+    rotate: 90deg;
+  }
+`;
+
+const InputField = styled.textarea`
+  position: relative;
+  grid-column: 2;
+  align-self: center;
+  border: none;
+  font-family: inherit;
+  padding: 0.9em;
+
+
 
   &::placeholder {
-    display: inline-flex;
-    align-self: center;
-    border: 2px solid red;
-    align-content: center;
-    align-items: center;
-    vertical-align: middle;
-    margin: auto 0;
-
+    font-family: -apple-system, 'Segoe UI', 'Open Sans', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.5em;
   }
 
   &:hover,
   &:focus {
-    border: 2px solid red;
+    outline: none;
+    box-shadow: 0 -1px 2px 1px #eadcdb,
+      0 0 1px 1px #ddaaaf;
   }
 
   &:hover::placeholder,
@@ -47,5 +72,6 @@ const InputField = styled.textarea`
 `;
 
 export {
+  InputContainer,
   InputField,
 };

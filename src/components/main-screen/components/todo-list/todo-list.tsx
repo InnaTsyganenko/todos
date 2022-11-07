@@ -11,6 +11,8 @@ const TodoList = ({ children, ...props }: TodoListProps) => (
     <TodoInputField />
     <S.Tabs>
       <S.TabItem>jkjk</S.TabItem>
+      <S.TabItem>jkjk</S.TabItem>
+      <S.TabItem>jkjk</S.TabItem>
       <S.TabBtn>qqqqqq</S.TabBtn>
     </S.Tabs>
   </>
