@@ -1,213 +1,78 @@
-import styled, { css } from 'styled-components';
-import { Link } from 'components/common/common';
+import styled from 'styled-components';
 
-const Tabs = styled.ul`
+const TasksWrapper = styled.div`
+  margin: auto;
+  padding: 0;
+
+  box-shadow:
+    0 6px 1px 0 ${({ theme }) => theme.color.whiteSmoke},
+    0 -5px 1px 0 ${({ theme }) => theme.color.whiteSmoke},
+    -1px 0 4px 0 ${({ theme }) => theme.color.gray},
+    1px 0 4px 0 ${({ theme }) => theme.color.gray};
+`;
+
+const TaskList = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   margin: auto;
   padding: 0;
-  list-style: none;
 `;
 
-const TabItem = styled.li`
-  display: flex;
+const TaskContainer = styled.div`
   width: 100%;
-  padding: 1em;
-  align-items: center;
   margin: 0;
-  box-shadow:
-    0 7px 1px 0 ${({ theme }) => theme.color.whiteSmoke},
-    0 -1px 5px 0 ${({ theme }) => theme.color.whiteSmoke},
-    -2px 0 2px 0 #cbcbcb,
-    2px 0 3px 0 #cbcbcb,
-    0 -1px 1px 0 #eadcdb;
+  padding: 0;
+  border-top: 1px solid ${({ theme }) => theme.color.whisper};
+  padding: 0.5em;
 
   &:last-of-type {
-    box-shadow:
-      0 -1px 5px 0 ${({ theme }) => theme.color.whiteSmoke},
-      -2px 0 2px 0 #cbcbcb,
-      2px 0 3px 0 #cbcbcb,
-      0 -1px 1px 0 #eadcdb;
+    border-bottom: 1px solid ${({ theme }) => theme.color.whisper};
   }
 `;
 
-const TabBtn = styled.button.attrs({ type: 'button' })`
-  display: flex;
+const TaskLabel = styled.label`
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  justify-content: start;
+  justify-items: start;
+  align-content: center;
   align-items: center;
-  padding: 0;
+  margin: 0;
 
-  font-family: inherit;
-  font-size: ${({ theme }) => theme.font.semibase};
-  line-height: 140%;
-  letter-spacing: -0.02em;
-  font-weight: 700;
-
-  color: ${({ theme }) => theme.color.whisper};
-  background: transparent;
-  border: none;
+  color: ${({ theme }) => theme.color.eclipse};
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.4em;
   cursor: pointer;
 
-  svg {
-    flex-shrink: 0;
-  }
+  &::before {
+    display: inline-grid;
+    grid-column: 1;
+    content: '';
+    border-radius: 50%;
+    width: 1.4em;
+    height: 1.4em;
+    border: 1px solid ${({ theme }) => theme.color.lightGray};
+    margin-right: 10px;
+    }
+`;
+
+const TaskInputRadio = styled.input.attrs({ type: 'radio' })`
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+
 
   &:focus span,
   &:hover span {
     border-bottom: 2px solid ${({ theme }) => theme.color.tangerine};
   }
-
-  ${({ isActive }: any) =>
-    isActive &&
-    css`
-      span {
-        border-bottom: 2px solid ${({ theme }) => theme.color.tangerine};
-      }
-    `}
-`;
-
-const TabTitle = styled.span`
-  margin-left: 13px;
-  padding-top: 4px;
-  padding-bottom: 3px;
-  border-bottom: 2px solid transparent;
-`;
-
-const QuestsList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(3, 344px);
-  gap: 32px 24px;
-
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  @media (max-width: 1150px) {
-    grid-template-columns: repeat(3, minmax(303px, 1fr));
-  }
-`;
-
-const QuestItem = styled.li``;
-
-const QuestItemLink = styled(Link)`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Quest = styled.article`
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  min-width: 344px;
-  min-height: 232px;
-
-  @media (max-width: 1150px) {
-    min-width: 303px;
-    min-height: 204px;
-  }
-
-  &::after {
-    content: '';
-    z-index: 2;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 160px;
-
-    background-image: linear-gradient(
-      0.36deg,
-      rgba(28, 27, 27, 0.9) 5.23%,
-      rgba(46, 46, 46, 0) 98.38%
-    );
-
-    border-radius: 3px;
-  }
-`;
-
-const QuestContent = styled.div`
-  position: relative;
-  z-index: 3;
-
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  margin-top: auto;
-`;
-
-const QuestTitle = styled.h2`
-  max-width: 264px;
-  max-height: 59px;
-  margin: 0;
-  margin-bottom: 16px;
-  padding: 0;
-
-  font-size: ${({ theme }) => theme.font.medium};
-  line-height: 120%;
-  font-weight: 700;
-  color: ${({ theme }) => theme.color.white};
-  word-break: break-word;
-  overflow: hidden;
-`;
-
-const QuestImage = styled.img`
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-`;
-
-const QuestFeatures = styled.ul`
-  display: flex;
-
-  margin: 0;
-  padding: 0;
-  list-style: none;
-`;
-
-const QuestFeatureItem = styled.li`
-  display: flex;
-  align-items: center;
-  min-height: 20px;
-  max-width: 100px;
-  max-height: 50px;
-  word-break: break-word;
-  overflow: hidden;
-
-  font-size: ${({ theme }) => theme.font.small};
-  line-height: 144%;
-  color: ${({ theme }) => theme.color.whisper};
-
-  &:not(:last-of-type) {
-    padding-right: 13px;
-    margin-right: 12px;
-    border-right: 1px solid ${({ theme }) => theme.color.darkerGray};
-  }
-
-  svg {
-    flex-shrink: 0;
-    margin-right: 9px;
-    margin-bottom: 2px;
-  }
 `;
 
 export {
-  Tabs,
-  TabItem,
-  TabBtn,
-  TabTitle,
-  QuestsList,
-  QuestItem,
-  QuestItemLink,
-  Quest,
-  QuestContent,
-  QuestTitle,
-  QuestImage,
-  QuestFeatures,
-  QuestFeatureItem,
+  TasksWrapper,
+  TaskList,
+  TaskContainer,
+  TaskLabel,
+  TaskInputRadio
 };

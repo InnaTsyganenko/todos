@@ -20,7 +20,7 @@ declare module 'styled-components' {
       whiteSmoke: string;
       whisper: string;
       gray: string;
-      darkerGray: string;
+      lightGray: string;
       nero: string;
       nero2: string;
       tangerine: string;

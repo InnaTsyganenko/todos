@@ -1,6 +1,6 @@
-export const getItems = () => [
+export const getTasks = [
   {
-    value: 'то,',
+    value: 'То,',
     isActive: true
   },
   {
@@ -8,7 +8,7 @@ export const getItems = () => [
     isActive: false
   },
   {
-    value: 'пятое',
+    value: 'пятое, ',
     isActive: true
   },
   {
@@ -20,3 +20,5 @@ export const getItems = () => [
     isActive: true
   },
 ];
+
+export const TaskExamples = ['Покормить кота', 'Составить список продуктов', 'Захватить мир'];
