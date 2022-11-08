@@ -1,19 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: url("../../assets/fonts/open-sans.woff2") format('woff2');
-  }
-
-  @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    src: url("../../assets/fonts/open-sans-700.woff2") format('woff2');
-  }
 
   *,
   *::before,
@@ -34,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     width: 100%;
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: -apple-system, 'Segoe UI', 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: ${({ theme }) => theme.font.base};
