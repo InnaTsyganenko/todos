@@ -6,11 +6,13 @@ type TodoListProps = PropsWithChildren<{
 }>;
 
 const TodoInputField = ({ children, ...props }: TodoListProps) => (
-  <S.InputField
-    placeholder='What'
-    value={''}
-  >children
-  </S.InputField>
+  <S.InputContainer>
+    <S.InputField
+      placeholder='What needs to be done?'
+      value={''}
+    >children
+    </S.InputField>
+  </S.InputContainer>
 );
 
 
