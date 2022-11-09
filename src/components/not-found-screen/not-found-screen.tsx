@@ -1,19 +1,14 @@
-import {Link} from 'react-router-dom';
-import { AppRoute } from '../../const';
-import Wrapper from '../wrapper/wrapper';
+import { AppRoute } from 'const';
+import * as S from './not-found-screen.styled';
 
-function NotFoundScreen() {
-  return (
-    <Wrapper>
-      <main className="page-content">
-        <div className="container">
-          <p>Oooops!</p>
-          <h2>404. Page not found.</h2>
-          <h3><Link to={AppRoute.Root} style={{opacity: '50%', textDecoration: 'underline'}}>Вернуться на главную</Link>?</h3>
-        </div>
-      </main>
-    </Wrapper>
-  );
-}
+const NotFoundScreen = () => (
+  <S.NotFoundScreenWrapper>
+    <>
+      <S.NotFoundScreenTitle>Oooops!</S.NotFoundScreenTitle>
+      <S.NotFoundScreenTitle>404. The page does not exist.</S.NotFoundScreenTitle>
+      <S.NotFoundScreenLink to={AppRoute.Root} $isActiveLink>Go to main page?</S.NotFoundScreenLink>
+    </>
+  </S.NotFoundScreenWrapper>
+);
 
 export default NotFoundScreen;

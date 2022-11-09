@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import * as S from './page-title.styled';
 
 type TodoListTitleProps = PropsWithChildren<{
-  children?: any;
+  children?: string;
 }>;
 
 const PageTitle = ({ children, ...props }: TodoListTitleProps) => (
