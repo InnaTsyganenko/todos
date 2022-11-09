@@ -57,7 +57,7 @@ const TaskLabel = styled.label`
     }
 `;
 
-const TaskInputCheckbox = styled.input.attrs({ type: 'checkbox' })`
+const TaskInputCheckbox = styled.input.attrs({ type: 'radio' })`
   position: absolute;
   z-index: -1;
   opacity: 0;

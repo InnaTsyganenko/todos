@@ -4,6 +4,8 @@ const InputContainer = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: 50px 1fr;
+  align-items: center;
+  justify-items: start;
   margin-top: 1em;
   background: ${({ theme }) => theme.color.white};
 
@@ -22,10 +24,30 @@ const InputContainer = styled.div`
   }
 `;
 
-const InputButton = styled.button`
+const InputLabel = styled.label`
   position: relative;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+  background: red;
+
+  .ebsUoQ::before {
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    display: block;
+    grid-column: 1;
+    content: '';
+    border-radius: 50%;
+    width: 1.4em;
+    height: 1.4em;
+    border: 1px solid rgb(190,190,190);
+    margin-right: 10px;
+    z-index: 100;
+}
+  /* position: relative;
   grid-column: 1;
-  display: grid;
+  display: flex;
   align-items: center;
   justify-items: center;
   border: none;
@@ -42,18 +64,21 @@ const InputButton = styled.button`
 
   &:disabled {
     background: ${({ theme }) => theme.color.gray};
+  } */
+`;
+
+const InputDatalistIcon = styled.svg`
+  rotate: 90deg;
+
+  &:hover,
+  &:focus {
+    path {
+      fill:  ${({ theme }) => theme.color.carrotOrange};
+    }
   }
 `;
 
-const InputButtonIcon = styled.svg`
-    rotate: 90deg;
-
-    &:hover,
-    &:focus {
-      path {
-        fill:  ${({ theme }) => theme.color.carrotOrange};
-      }
-    }
+const InputDatalistOption = styled.option`
 `;
 
 const InputField = styled.input`
@@ -66,6 +91,11 @@ const InputField = styled.input`
   font-family: inherit;
   color: ${({ theme }) => theme.color.gray};
   font-size: 1.5em;
+  appearance: none;
+
+  &::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
 
   &::placeholder {
     font-family: inherit;
@@ -90,7 +120,8 @@ const InputField = styled.input`
 
 export {
   InputContainer,
-  InputButton,
-  InputButtonIcon,
+  InputLabel,
+  InputDatalistIcon,
+  InputDatalistOption,
   InputField,
 };
