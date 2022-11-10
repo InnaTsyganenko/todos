@@ -24,50 +24,9 @@ const InputContainer = styled.div`
   }
 `;
 
-const InputLabel = styled.label`
-  position: relative;
-  justify-self: center;
-  width: 100%;
-  height: 100%;
-  background: red;
-
-  .ebsUoQ::before {
-    position: absolute;
-    top: 35px;
-    left: 10px;
-    display: block;
-    grid-column: 1;
-    content: '';
-    border-radius: 50%;
-    width: 1.4em;
-    height: 1.4em;
-    border: 1px solid rgb(190,190,190);
-    margin-right: 10px;
-    z-index: 100;
-}
-  /* position: relative;
+const InputFieldIcon = styled.svg`
   grid-column: 1;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  border: none;
-  outline: none;
-  background: ${({ theme }) => theme.color.white};
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    path {
-      fill:  ${({ theme }) => theme.color.carrotOrange};
-    }
-  }
-
-  &:disabled {
-    background: ${({ theme }) => theme.color.gray};
-  } */
-`;
-
-const InputDatalistIcon = styled.svg`
+  justify-self: center;
   rotate: 90deg;
 
   &:hover,
@@ -78,17 +37,52 @@ const InputDatalistIcon = styled.svg`
   }
 `;
 
-const InputDatalistOption = styled.option`
+const InputList = styled.ul`
+  display: block;
+  justify-self: center;
+  position: absolute;
+  top: calc(100%);
+  z-index: 4;
+
+  width: calc(100% - 2em);
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+
+  color: ${({ theme }) => theme.color.eclipse};
+  list-style: none;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 19px;
+  background: inherit;
+  text-align: left;
+  box-shadow: 0 0 3px 1px ${({ theme }) => theme.color.lightGray};
+
+  -webkit-appearance: none;
+    -moz-appearance: none;
+          appearance: none;
+`;
+
+const InputListItem = styled.li`
+  width: 100%;
+  cursor: pointer;
+  border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
+  padding: 0.5em 1em;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 `;
 
 const InputField = styled.input`
   position: relative;
   grid-column: 2;
-  border: none;
-  font-family: inherit;
   padding: 0.8em;
   padding-left: 0;
+  width: 100%;
   font-family: inherit;
+  border: none;
   color: ${({ theme }) => theme.color.gray};
   font-size: 1.5em;
   appearance: none;
@@ -120,8 +114,8 @@ const InputField = styled.input`
 
 export {
   InputContainer,
-  InputLabel,
-  InputDatalistIcon,
-  InputDatalistOption,
+  InputFieldIcon,
+  InputList,
+  InputListItem,
   InputField,
 };
