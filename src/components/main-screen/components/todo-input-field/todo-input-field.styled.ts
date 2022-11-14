@@ -24,19 +24,6 @@ const InputContainer = styled.div`
   }
 `;
 
-const InputFieldIcon = styled.svg`
-  grid-column: 1;
-  justify-self: center;
-  rotate: 90deg;
-
-  &:hover,
-  &:focus {
-    path {
-      fill:  ${({ theme }) => theme.color.carrotOrange};
-    }
-  }
-`;
-
 const InputList = styled.ul`
   display: block;
   justify-self: center;
@@ -72,6 +59,23 @@ const InputListItem = styled.li`
 
   &:last-of-type {
     border-bottom: none;
+  }
+`;
+
+const InputInputLabel = styled.label`
+  grid-column: 1;
+  justify-self: center;
+  margin-top: 10px;
+`;
+
+const InputFieldIcon = styled.svg`
+  rotate: 90deg;
+
+  &:hover,
+  &:focus {
+    path {
+      fill:  ${({ theme }) => theme.color.carrotOrange};
+    }
   }
 `;
 
@@ -117,5 +121,6 @@ export {
   InputFieldIcon,
   InputList,
   InputListItem,
+  InputInputLabel,
   InputField,
 };

@@ -1,5 +1,7 @@
-import { getTasks } from 'mock';
+import { useAppSelector } from 'hooks';
+import { getMockTasks } from 'mock';
 import { PropsWithChildren } from 'react';
+import { getTasks } from 'store/task-operations/selectors';
 import TodoInputField from '../todo-input-field/todo-input-field';
 import * as S from './todo-list.styled';
 
@@ -9,6 +11,8 @@ type TodoListProps = PropsWithChildren<{
 
 const TodoList = ({ children, ...props }: TodoListProps) => {
 
+  const tasksInList = useAppSelector(getTasks);
+
   const onActiveLinkClick = (activeItem) => {
     // setIsActiveLink(activeItem);
     // if (activeItem === DEFAULT_TYPE) {
@@ -17,23 +21,28 @@ const TodoList = ({ children, ...props }: TodoListProps) => {
     //   dispatch(getTypeForFilterQuests(Object.keys(defineQuestType).find(key => defineQuestType[key] === activeItem)));
     // }
   };
+  console.log(getMockTasks)
+  console.log(tasksInList)
 
   return (
     <S.TasksWrapper>
       <TodoInputField />
       <S.TaskList>
-        {getTasks.map((item) => (
-          <S.TaskContainer key={item as keyof object}>
-            <S.TaskInputCheckbox
-              onClick={() => {
-                onActiveLinkClick(item);
-              }}
-              checked={item.isActive}
-            >
-            </S.TaskInputCheckbox>
-            <S.TaskLabel>{item.value}</S.TaskLabel>
-          </S.TaskContainer>
-        ))}
+        {((tasksInList.length === 0) ?
+          getMockTasks :
+          tasksInList)
+          .map((item) => (
+            <S.TaskContainer key={item.id as keyof object}>
+              <S.TaskInputCheckbox
+                onClick={() => {
+                  onActiveLinkClick(item);
+                }}
+                defaultChecked={item.isActive}
+              >
+              </S.TaskInputCheckbox>
+              <S.TaskLabel>{item.value}</S.TaskLabel>
+            </S.TaskContainer>
+          ))}
       </S.TaskList>
     </S.TasksWrapper>
   );

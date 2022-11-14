@@ -55,6 +55,15 @@ const TaskLabel = styled.label`
     border: 1px solid ${({ theme }) => theme.color.lightGray};
     margin-right: 10px;
     }
+
+    &:focus::before,
+    &:hover::before {
+      border: 1px solid ${({ theme }) => theme.color.tangerine};
+    }
+
+    &:active::before {
+      border: 1px solid ${({ theme }) => theme.color.lightGray};
+    }
 `;
 
 const TaskInputCheckbox = styled.input.attrs({ type: 'checkbox' })`
@@ -63,10 +72,11 @@ const TaskInputCheckbox = styled.input.attrs({ type: 'checkbox' })`
   opacity: 0;
 
 
-  &:focus span,
-  &:hover span {
-    border-bottom: 2px solid ${({ theme }) => theme.color.tangerine};
-  }
+
+
+  &:checked + label::before {
+    background: url('./img/check-mark.svg') center center no-repeat;
+    }
 `;
 
 export {

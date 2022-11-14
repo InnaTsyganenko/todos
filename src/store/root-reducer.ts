@@ -7,13 +7,13 @@ import { NameSpace } from '../const';
 const rootPersistConfig = {
   key: 'root',
   storage,
-  blacklist: ['TASKS'],
+  blacklist: ['tasks'],
 };
 
 const tasksPersistConfig = {
-  key: 'TASKS',
+  key: 'tasks',
   storage,
-  whitelist: ['pickedId'],
+  whitelist: ['tasksInList'],
 };
 
 const rootReducer = combineReducers({
