@@ -1,10 +1,9 @@
-import {createSlice} from '@reduxjs/toolkit';
-import { GuitarsOperations } from '../../types/state';
+import {createSlice, nanoid} from '@reduxjs/toolkit';
+import { TaskOperations } from '../../types/state';
 import { NameSpace } from '../../const';
 
-const initialState: GuitarsOperations = {
-  isModalOpen: false,
-  guitarsInCart: [],
+const initialState: TaskOperations = {
+  tasksInList: [],
   isGuitarAddedInCart: false,
 };
 
@@ -12,34 +11,17 @@ export const taskOperations = createSlice({
   name: NameSpace.tasks,
   initialState,
   reducers: {
-    setModalWindowState: (state, action) => {
-      state.isModalOpen = action.payload;
-    },
-    setGuitarInCart: (state, action) => {
-      state.guitarsInCart = state.guitarsInCart.some((obj) => obj.id === action.payload.id)
-        ? state.guitarsInCart.map((item) => (item.id === action.payload.id) ? action.payload : item)
-        : [...state.guitarsInCart, action.payload];
+    setTaskInList: (state, action) => {
+      state.tasksInList = [{value: action.payload, isActive: false, id: nanoid()}, ...state.tasksInList];
+      // state.tasksInList = [];
     },
     setGuitarInCartState: (state, action) => {
       state.isGuitarAddedInCart = action.payload;
-    },
-    deleteGuitarFromCart: (state, action) => {
-      state.guitarsInCart = [...state.guitarsInCart].filter((item) => item.id !== action.payload);
-    },
-    increaseGuitarCartQt: (state, action) => {
-      state.guitarsInCart.find((item) => item.id === action.payload).guitarQt++;
-    },
-    decreaseGuitarCartQt: (state, action) => {
-      state.guitarsInCart.find((item) => item.id === action.payload).guitarQt--;
     },
   },
 });
 
 export const {
-  setModalWindowState,
-  setGuitarInCart,
+  setTaskInList,
   setGuitarInCartState,
-  deleteGuitarFromCart,
-  increaseGuitarCartQt,
-  decreaseGuitarCartQt,
 } = taskOperations.actions;

@@ -1,4 +1,4 @@
-import { getTasks } from 'mock';
+import { getMockTasks } from 'mock';
 import { PropsWithChildren } from 'react';
 import TodoInputField from '../todo-input-field/todo-input-field';
 import * as S from './todo-list.styled';
@@ -22,7 +22,7 @@ const TodoList = ({ children, ...props }: TodoListProps) => {
     <S.TasksWrapper>
       <TodoInputField />
       <S.TaskList>
-        {getTasks.map((item) => (
+        {getMockTasks.map((item) => (
           <S.TaskContainer key={item as keyof object}>
             <S.TaskInputCheckbox
               onClick={() => {

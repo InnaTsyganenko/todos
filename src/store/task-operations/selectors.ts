@@ -1,6 +1,7 @@
+import { Tasks } from './../../types/tasks';
 import { NameSpace } from '../../const';
 import { State } from '../../types/state';
 
-export const getStatusModalWindow = (state: State): boolean => state[NameSpace.tasks].isModalOpen;
+export const getTasks = (state: State): Tasks => state[NameSpace.tasks].tasksInList;
 
-export const getGuitarAddInCartStatus = (state: State): boolean => state[NameSpace.tasks].isGuitarAddedInCart;
+// export const getStatusModalWindow = (state: State): boolean => state[NameSpace.tasks].isModalOpen;

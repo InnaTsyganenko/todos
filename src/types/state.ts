@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { store } from '../store/index.js';
+import { Tasks } from './tasks.js';
 
-export type GuitarsOperations = {
-  isModalOpen: boolean,
-  guitarsInCart: any[],
+export type TaskOperations = {
+  tasksInList: Tasks,
   isGuitarAddedInCart: boolean,
 };
 
