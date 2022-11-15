@@ -21,8 +21,6 @@ const TodoList = ({ children, ...props }: TodoListProps) => {
     //   dispatch(getTypeForFilterQuests(Object.keys(defineQuestType).find(key => defineQuestType[key] === activeItem)));
     // }
   };
-  console.log(getMockTasks)
-  console.log(tasksInList)
 
   return (
     <S.TasksWrapper>
@@ -33,14 +31,17 @@ const TodoList = ({ children, ...props }: TodoListProps) => {
           tasksInList)
           .map((item) => (
             <S.TaskContainer key={item.id as keyof object}>
-              <S.TaskInputCheckbox
-                onClick={() => {
-                  onActiveLinkClick(item);
-                }}
-                defaultChecked={item.isActive}
-              >
-              </S.TaskInputCheckbox>
-              <S.TaskLabel>{item.value}</S.TaskLabel>
+              <S.TaskLabel>
+                <S.TaskInputCheckbox
+                  onClick={() => {
+                    onActiveLinkClick(item);
+                  }}
+                  defaultChecked={item.isActive}
+                >
+                </S.TaskInputCheckbox>
+                <S.TaskIndicator></S.TaskIndicator>
+                {item.value}
+              </S.TaskLabel>
             </S.TaskContainer>
           ))}
       </S.TaskList>
