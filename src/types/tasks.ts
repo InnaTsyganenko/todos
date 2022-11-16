@@ -1,7 +1,7 @@
 export type Task = {
   id: string;
   value: string;
-  isActive: boolean;
+  isCompleted: boolean;
 };
 
 export type Tasks = Task[];

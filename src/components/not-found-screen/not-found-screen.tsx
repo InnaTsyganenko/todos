@@ -6,7 +6,7 @@ const NotFoundScreen = () => (
     <>
       <S.NotFoundScreenTitle>Oooops!</S.NotFoundScreenTitle>
       <S.NotFoundScreenTitle>404. The page does not exist.</S.NotFoundScreenTitle>
-      <S.NotFoundScreenLink to={AppRoute.Root} $isActiveLink>Go to main page?</S.NotFoundScreenLink>
+      <S.NotFoundScreenLink to={AppRoute.Root} $isCompletedLink>Go to main page?</S.NotFoundScreenLink>
     </>
   </S.NotFoundScreenWrapper>
 );

@@ -36,21 +36,10 @@ const TodoClearCompletedButton = styled.button`
   padding: 0;
   border-top: 1px solid ${({ theme }) => theme.color.whisper};
   padding: 0.9em 0.6em;
+  cursor: pointer;
 
   &:last-of-type {
     border-bottom: 1px solid ${({ theme }) => theme.color.whisper};
-  }
-`;
-
-const TaskInputCheckbox = styled.input.attrs({ type: 'radio' })`
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-
-
-  &:focus span,
-  &:hover span {
-    border-bottom: 2px solid ${({ theme }) => theme.color.tangerine};
   }
 `;
 
@@ -58,6 +47,5 @@ export {
   TodoFooterWrapper,
   TodoInfoLeft,
   TodoFilterButton,
-  TodoClearCompletedButton,
-  TaskInputCheckbox
+  TodoClearCompletedButton
 };

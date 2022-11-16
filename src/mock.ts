@@ -2,27 +2,27 @@ export const getMockTasks = [
   {
     id: 1,
     value: 'То,',
-    isActive: true
+    isCompleted: false
   },
   {
     id: 2,
     value: 'сё,',
-    isActive: false
+    isCompleted: false
   },
   {
     id: 3,
     value: 'пятое, ',
-    isActive: true
+    isCompleted: false
   },
   {
     id: 4,
     value: 'десятое...',
-    isActive: false
+    isCompleted: false
   },
   {
     id: 5,
     value: '...ничё се!',
-    isActive: true
+    isCompleted: false
   },
 ];
 

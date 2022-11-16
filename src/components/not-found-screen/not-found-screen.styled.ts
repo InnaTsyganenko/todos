@@ -17,7 +17,7 @@ const NotFoundScreenTitle = styled(Title)`
   color: ${({ theme }) => theme.color.gray};
 `;
 
-const NotFoundScreenLink = styled(RouterLink)<{$isActiveLink: boolean}>`
+const NotFoundScreenLink = styled(RouterLink)<{$isCompletedLink: boolean}>`
   display: block;
   font-size: ${({ theme }) => theme.font.medium};
   font-weight: 600;
@@ -25,8 +25,8 @@ const NotFoundScreenLink = styled(RouterLink)<{$isActiveLink: boolean}>`
 
   color: ${({ theme }) => theme.color.eclipse};
 
-  ${({ $isActiveLink }) =>
-    $isActiveLink &&
+  ${({ $isCompletedLink }) =>
+    $isCompletedLink &&
     css`
       color: ${({ theme }) => theme.color.lightGray};
     `}
