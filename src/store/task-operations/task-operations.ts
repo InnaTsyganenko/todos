@@ -1,9 +1,10 @@
 import {createSlice, nanoid} from '@reduxjs/toolkit';
 import { TaskOperations } from '../../types/state';
-import { NameSpace } from '../../const';
+import { FilterItems, NameSpace } from '../../const';
 
 const initialState: TaskOperations = {
   tasksInList: [],
+  filtredTasks: [],
   isGuitarAddedInCart: false,
 };
 
@@ -15,13 +16,21 @@ export const taskOperations = createSlice({
       state.tasksInList = [{value: action.payload, isActive: false, id: nanoid()}, ...state.tasksInList];
       // state.tasksInList = [];
     },
-    setGuitarInCartState: (state, action) => {
-      state.isGuitarAddedInCart = action.payload;
+    changeTaskStatus: (state, action) => {
+      state.tasksInList = state.tasksInList.reduce((acc: any, el) => (el.id === action.payload)
+        ? [...acc, { ...el, isActive: !el.isActive }]
+        : [...acc, el], []);
+    },
+    filterItems: (state, action) => {
+      state.filtredTasks = FilterItems[1] === action.payload
+        ? [...state.tasksInList].filter((el) => (el.isActive))
+        : [...state.tasksInList].filter((el) => (!el.isActive));
     },
   },
 });
 
 export const {
   setTaskInList,
-  setGuitarInCartState,
+  changeTaskStatus,
+  filterItems,
 } = taskOperations.actions;
