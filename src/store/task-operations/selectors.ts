@@ -4,4 +4,4 @@ import { State } from '../../types/state';
 
 export const getTasks = (state: State): Tasks => state[NameSpace.tasks].tasksInList;
 
-// export const getStatusModalWindow = (state: State): boolean => state[NameSpace.tasks].isModalOpen;
+export const getFiltredMovies = (state: State): Tasks => state[NameSpace.tasks].filtredTasks;

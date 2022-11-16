@@ -4,6 +4,7 @@ import { Tasks } from './tasks.js';
 
 export type TaskOperations = {
   tasksInList: Tasks,
+  filtredTasks: Tasks,
   isGuitarAddedInCart: boolean,
 };
 
