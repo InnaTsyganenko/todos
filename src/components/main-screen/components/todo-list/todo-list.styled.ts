@@ -4,11 +4,22 @@ const TaskListWrapper = styled.div`
   margin: auto;
   padding: 0;
 
+  -webkit-box-shadow:
+    0px 9px 0px -5px ${({ theme }) => theme.color.whiteSmoke},
+    0px 9px 0px -4px ${({ theme }) => theme.color.gray},
+    0px 16px 0px -8px ${({ theme }) => theme.color.whiteSmoke},
+    0px 16px 0px -7px ${({ theme }) => theme.color.gray},
+    0px 16px 5px -7px ${({ theme }) => theme.color.gray},
+    -1px 0 5px 0 ${({ theme }) => theme.color.gray},
+    1px 0 5px 0 ${({ theme }) => theme.color.gray};
   box-shadow:
-    0 6px 1px 0 ${({ theme }) => theme.color.whiteSmoke},
-    0 -5px 1px 0 ${({ theme }) => theme.color.whiteSmoke},
-    -1px 0 4px 0 ${({ theme }) => theme.color.gray},
-    1px 0 4px 0 ${({ theme }) => theme.color.gray};
+    0px 9px 0px -5px ${({ theme }) => theme.color.whiteSmoke},
+    0px 9px 0px -4px ${({ theme }) => theme.color.gray},
+    0px 16px 0px -8px ${({ theme }) => theme.color.whiteSmoke},
+    0px 16px 0px -7px ${({ theme }) => theme.color.gray},
+    0px 16px 5px -7px ${({ theme }) => theme.color.gray},
+    -1px 0 5px 0 ${({ theme }) => theme.color.gray},
+    1px 0 5px 0 ${({ theme }) => theme.color.gray};
 `;
 
 const TaskList = styled.div`

@@ -26,11 +26,8 @@ const TodoFooter = ({ children, ...props }: TodoFooterProps) => {
     dispatch(filterItems(valueFilter));
   };
 
-  const arr = [0,1,2,3,4,5];
-
   return (
     <S.TodoFooterWrapper>
-      <S.TodoFooterCards></S.TodoFooterCards>
       <S.TodoInfoLeft>{countTasksLeft} items left</S.TodoInfoLeft>
       <S.TodoFiltersContainer>
         {FilterItems.map((item) => (
