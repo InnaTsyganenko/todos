@@ -4,6 +4,8 @@ const TodoFooterWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
   margin: auto;
   padding: 0.4em;
   color: ${({ theme }) => theme.color.eclipse};
@@ -16,14 +18,14 @@ const TodoFooterWrapper = styled.div`
 `;
 
 const TodoInfoLeft = styled.span`
-  margin: auto;
+  margin: 0;
   padding: 0;
 `;
 
 const TodoFilterButton = styled.button`
   margin: 0;
   padding: 0;
-  border-top: 1px solid ${({ theme }) => theme.color.whisper};
+  border: none;
   padding: 0.9em 0.6em;
 
   &:last-of-type {
@@ -34,7 +36,7 @@ const TodoFilterButton = styled.button`
 const TodoClearCompletedButton = styled.button`
   margin: 0;
   padding: 0;
-  border-top: 1px solid ${({ theme }) => theme.color.whisper};
+  border: none;
   padding: 0.9em 0.6em;
   cursor: pointer;
 

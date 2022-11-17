@@ -1,4 +1,4 @@
-import { DEFAULT_FILTER } from 'const';
+import { DEFAULT_FILTER, FilterItems } from 'const';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { getMockTasks } from 'mock';
 import { PropsWithChildren } from 'react';
@@ -6,6 +6,7 @@ import { getActiveFilter, getFiltredMovies, getTasks } from 'store/task-operatio
 import { changeTaskStatus } from 'store/task-operations/task-operations';
 import TodoFooter from '../todo-footer/todo-footer';
 import TodoInputField from '../todo-input-field/todo-input-field';
+import { TodoNoTasksContainer } from '../todo-no-tasks/todo-no-tasks.styled';
 import * as S from './todo-list.styled';
 
 type TodoListProps = PropsWithChildren<{
@@ -27,6 +28,15 @@ const TodoList = ({ children, ...props }: TodoListProps) => {
     <S.TaskListWrapper>
       <TodoInputField />
       <S.TaskList>
+        {(selectedFilter === FilterItems[1]) && (filtredItems.length < 1)
+          ? <TodoNoTasksContainer>No active tasks</TodoNoTasksContainer>
+          : false}
+
+        {(selectedFilter === FilterItems[2]) && (filtredItems.length < 1)
+          ? <TodoNoTasksContainer>No completed tasks</TodoNoTasksContainer>
+          : false}
+
+
         {((tasksInList.length === 0)
           ? getMockTasks
           : (selectedFilter === DEFAULT_FILTER)
