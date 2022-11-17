@@ -1,7 +1,8 @@
 import { DEFAULT_FILTER } from './../../const';
 import {createSlice, nanoid} from '@reduxjs/toolkit';
 import { TaskOperations } from '../../types/state';
-import { FilterItems, NameSpace } from '../../const';
+import { NameSpace } from '../../const';
+import { filter } from '../../util';
 
 const initialState: TaskOperations = {
   tasksInList: [],
@@ -24,12 +25,16 @@ export const taskOperations = createSlice({
     },
     filterItems: (state, action) => {
       state.activeFilter = action.payload;
-      state.filtredTasks = FilterItems[1] === action.payload
-        ? [...state.tasksInList].filter((el) => (!el.isCompleted))
-        : [...state.tasksInList].filter((el) => (el.isCompleted));
+      state.tasksInList = [...state.tasksInList];
+      state.filtredTasks = filter[state.activeFilter](state.tasksInList);
     },
     clearCompleted: (state) => {
       state.tasksInList = state.tasksInList.filter((el) => (!el.isCompleted));
+      state.filtredTasks = state.tasksInList;
+      state.activeFilter = DEFAULT_FILTER;
+    },
+    resetFilter: (state) => {
+      state.activeFilter = DEFAULT_FILTER;
     },
   },
 });
@@ -39,4 +44,5 @@ export const {
   changeTaskStatus,
   filterItems,
   clearCompleted,
+  resetFilter,
 } = taskOperations.actions;
