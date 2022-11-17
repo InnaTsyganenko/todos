@@ -6,32 +6,30 @@ const Button = styled.button`
 
   max-width: 100%;
   margin: 0;
-  padding-top: 22px;
-  padding-right: 47px;
-  padding-bottom: 23px;
-  padding-left: 48px;
-
-  font-family: inherit;
-  font-size: ${({ theme }) => theme.font.upperbase};
-  line-height: 20px;
-  letter-spacing: 0.03em;
-  font-weight: 800;
-  text-transform: uppercase;
-
-  color: ${({ theme }) => theme.color.white};
-  background-color: ${({ theme }) => theme.color.tangerine};
-  border: none;
-  border-radius: 65px;
+  margin-right: 20px;
+  padding: 0.3em 0.5em;
+  border-radius: 5px;
+  background: none;
   cursor: pointer;
-  outline: 2px dashed green;
+  border: none;
 
   &:focus,
   &:hover {
-    background-color: ${({ theme }) => theme.color.carrotOrange};
+    border: 1px solid ${({ theme }) => theme.color.lightGray};
   }
 
   &:active {
-    opacity: 0.8;
+    border: 1px solid ${({ theme }) => theme.color.gray};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${({ theme }) => theme.color.lightGray};
+    border: 1px solid ${({ theme }) => theme.color.gray};
+  }
+
+  &:last-of-type {
+    margin-right: 0;
   }
 `;
 

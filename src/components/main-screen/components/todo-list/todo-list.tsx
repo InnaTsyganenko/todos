@@ -1,6 +1,5 @@
 import { DEFAULT_FILTER, FilterItems } from 'const';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { getMockTasks } from 'mock';
 import { PropsWithChildren } from 'react';
 import { getActiveFilter, getFiltredMovies, getTasks } from 'store/task-operations/selectors';
 import { changeTaskStatus } from 'store/task-operations/task-operations';
@@ -28,6 +27,10 @@ const TodoList = ({ children, ...props }: TodoListProps) => {
     <S.TaskListWrapper>
       <TodoInputField />
       <S.TaskList>
+        {(selectedFilter === DEFAULT_FILTER) && (tasksInList.length < 1)
+          ? <TodoNoTasksContainer>No tasks</TodoNoTasksContainer>
+          : false}
+
         {(selectedFilter === FilterItems[1]) && (filtredItems.length < 1)
           ? <TodoNoTasksContainer>No active tasks</TodoNoTasksContainer>
           : false}
@@ -37,24 +40,22 @@ const TodoList = ({ children, ...props }: TodoListProps) => {
           : false}
 
 
-        {((tasksInList.length === 0)
-          ? getMockTasks
-          : (selectedFilter === DEFAULT_FILTER)
-            ? tasksInList
-            : filtredItems)
-              .map((item) => (
-                <S.TaskItem
-                  key={item.id as keyof object}
-                  onClick={() => handleChangeStatus(item.id)}
-                >
-                  <S.TaskInputCheckbox
-                    onChange={() => handleChangeStatus(item.id)}
-                    checked={item.isCompleted}
-                  >
-                  </S.TaskInputCheckbox>
-                  <S.TaskLabel>{item.value}</S.TaskLabel>
-                </S.TaskItem>
-              ))}
+        {((selectedFilter === DEFAULT_FILTER)
+          ? tasksInList
+          : filtredItems)
+          .map((item) => (
+            <S.TaskItem
+              key={item.id as keyof object}
+              onClick={() => handleChangeStatus(item.id)}
+            >
+              <S.TaskInputCheckbox
+                onChange={() => handleChangeStatus(item.id)}
+                checked={item.isCompleted}
+              >
+              </S.TaskInputCheckbox>
+              <S.TaskLabel>{item.value}</S.TaskLabel>
+            </S.TaskItem>
+          ))}
       </S.TaskList>
       <TodoFooter></TodoFooter>
     </S.TaskListWrapper>
