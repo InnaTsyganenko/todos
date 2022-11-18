@@ -6,6 +6,7 @@ export type TaskOperations = {
   tasksInList: Tasks,
   filtredTasks: Tasks,
   activeFilter: string,
+  heightTaskList: any,
 };
 
 export interface Validation {

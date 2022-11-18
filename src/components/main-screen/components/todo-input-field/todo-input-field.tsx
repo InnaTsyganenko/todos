@@ -1,7 +1,8 @@
-import { useAppDispatch } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import { TaskExamples } from 'mock';
 import { PropsWithChildren, useState } from 'react';
-import { setTaskInList } from 'store/task-operations/task-operations';
+import { getCurrentHeightTaskList } from 'store/task-operations/selectors';
+import { addTaskInList, setHeightTaskLisk } from 'store/task-operations/task-operations';
 import * as S from './todo-input-field.styled';
 
 type TodoListProps = PropsWithChildren<{
@@ -19,9 +20,18 @@ const TodoInputField = ({ children, ...props }: TodoListProps) => {
     setDatalistOpen(false);
   };
 
+  const currentHeightTaskList = useAppSelector(getCurrentHeightTaskList);
+
+  const handleHeightListKeep = () => {
+    console.log(document.getElementById('task-list')?.clientHeight)
+    dispatch(setHeightTaskLisk(document.getElementById('task-list')?.clientHeight));
+  };
+
   const handleInputKeyDown = (evt: any) => {
     if (evt.key === 'Enter') {
-      dispatch(setTaskInList(evt.target.value));
+      dispatch(addTaskInList(evt.target.value));
+      handleHeightListKeep();
+      dispatch(setHeightTaskLisk(currentHeightTaskList));
       setDatalistOpen(false);
       setInputValue('');
     }
@@ -33,14 +43,18 @@ const TodoInputField = ({ children, ...props }: TodoListProps) => {
   };
 
   const handleListItemClick = (value: string) => {
-    dispatch(setTaskInList(value));
+    dispatch(addTaskInList(value));
+    handleHeightListKeep();
+    dispatch(setHeightTaskLisk(currentHeightTaskList));
     setDatalistOpen(false);
     setInputValue('');
   };
 
   const handleListItemKeyDown = (evt: any, value: string) => {
     if (evt.key === 'Enter') {
-      dispatch(setTaskInList(value));
+      dispatch(addTaskInList(value));
+      handleHeightListKeep();
+      dispatch(setHeightTaskLisk(currentHeightTaskList));
       setDatalistOpen(false);
       setInputValue('');
     }

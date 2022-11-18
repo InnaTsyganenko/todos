@@ -29,7 +29,7 @@ const InputList = styled.ul`
   justify-self: center;
   position: absolute;
   top: calc(100%);
-  z-index: 4;
+  z-index: 1000;
 
   width: calc(100% - 2em);
   min-height: 100%;
