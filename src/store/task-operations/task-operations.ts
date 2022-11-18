@@ -8,15 +8,18 @@ const initialState: TaskOperations = {
   tasksInList: [],
   filtredTasks: [],
   activeFilter: DEFAULT_FILTER,
+  heightTaskList: document.getElementById('task-list')?.clientHeight,
 };
 
 export const taskOperations = createSlice({
   name: NameSpace.tasks,
   initialState,
   reducers: {
-    setTaskInList: (state, action) => {
+    addTaskInList: (state, action) => {
       state.tasksInList = [{value: action.payload, isCompleted: false, id: nanoid()}, ...state.tasksInList];
-      // state.tasksInList = [];
+    },
+    setHeightTaskLisk: (state, action) => {
+      state.heightTaskList = action.payload;
     },
     changeTaskStatus: (state, action) => {
       state.tasksInList = state.tasksInList.reduce((acc: any, el) => (el.id === action.payload)
@@ -40,7 +43,8 @@ export const taskOperations = createSlice({
 });
 
 export const {
-  setTaskInList,
+  addTaskInList,
+  setHeightTaskLisk,
   changeTaskStatus,
   filterItems,
   clearCompleted,

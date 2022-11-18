@@ -1,32 +1,25 @@
 import styled, { keyframes } from 'styled-components';
 
-const TaskListWrapper = styled.div`
+
+interface TaskListWrapperProps {
+  currentHeight: number;
+}
+
+const TaskListWrapper = styled.div<TaskListWrapperProps>`
   margin: auto;
   padding: 0;
+  height: ${({ currentHeight }) => currentHeight}px;
 
-  -webkit-box-shadow:
-    0px 9px 0px -5px ${({ theme }) => theme.color.whiteSmoke},
-    0px 9px 0px -4px ${({ theme }) => theme.color.gray},
-    0px 16px 0px -8px ${({ theme }) => theme.color.whiteSmoke},
-    0px 16px 0px -7px ${({ theme }) => theme.color.gray},
-    0px 16px 5px -7px ${({ theme }) => theme.color.gray},
-    -1px 0 5px 0 ${({ theme }) => theme.color.gray},
-    1px 0 5px 0 ${({ theme }) => theme.color.gray};
   box-shadow:
-    0px 9px 0px -5px ${({ theme }) => theme.color.whiteSmoke},
-    0px 9px 0px -4px ${({ theme }) => theme.color.gray},
-    0px 16px 0px -8px ${({ theme }) => theme.color.whiteSmoke},
-    0px 16px 0px -7px ${({ theme }) => theme.color.gray},
-    0px 16px 5px -7px ${({ theme }) => theme.color.gray},
-    -1px 0 5px 0 ${({ theme }) => theme.color.gray},
-    1px 0 5px 0 ${({ theme }) => theme.color.gray};
+    -1px 0 5px 0 ${({ theme }) => theme.color.lightGray},
+    1px 0 5px 0 ${({ theme }) => theme.color.lightGray};
 `;
 
 const TaskList = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: auto;
+  margin: 0 auto;
   padding: 0;
 `;
 

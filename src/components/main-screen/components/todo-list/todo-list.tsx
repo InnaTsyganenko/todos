@@ -1,8 +1,8 @@
 import { DEFAULT_FILTER, FilterItems } from 'const';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { PropsWithChildren } from 'react';
-import { getActiveFilter, getFiltredMovies, getTasks } from 'store/task-operations/selectors';
-import { changeTaskStatus } from 'store/task-operations/task-operations';
+import { getActiveFilter, getCurrentHeightTaskList, getFiltredTasks, getTasks } from 'store/task-operations/selectors';
+import { changeTaskStatus, filterItems, setHeightTaskLisk } from 'store/task-operations/task-operations';
 import TodoFooter from '../todo-footer/todo-footer';
 import TodoInputField from '../todo-input-field/todo-input-field';
 import { TodoNoTasksContainer } from '../todo-no-tasks/todo-no-tasks.styled';
@@ -18,13 +18,29 @@ const TodoList = ({ children, ...props }: TodoListProps) => {
 
   const dispatch = useAppDispatch();
 
-  const handleChangeStatus = (id: string) => dispatch(changeTaskStatus(id));
-
   const selectedFilter = useAppSelector(getActiveFilter);
-  const filtredItems = useAppSelector(getFiltredMovies);
+
+  const handleHeightListKeep = () => {
+    dispatch(setHeightTaskLisk(document.getElementById('task-list')?.clientHeight));
+  };
+
+  const handleChangeStatus = (id: string) => {
+    dispatch(changeTaskStatus(id));
+    if (selectedFilter !== DEFAULT_FILTER) {
+      dispatch(filterItems(selectedFilter));
+    }
+  };
+
+  const filtredItems = useAppSelector(getFiltredTasks);
+
+  const currentHeightTaskList = useAppSelector(getCurrentHeightTaskList);
 
   return (
-    <S.TaskListWrapper>
+    <S.TaskListWrapper
+      id="task-list"
+      onLoadCapture={handleHeightListKeep}
+      currentHeight={currentHeightTaskList}
+    >
       <TodoInputField />
       <S.TaskList>
         {(selectedFilter === DEFAULT_FILTER) && (tasksInList.length < 1)
@@ -49,7 +65,7 @@ const TodoList = ({ children, ...props }: TodoListProps) => {
               onClick={() => handleChangeStatus(item.id)}
             >
               <S.TaskInputCheckbox
-                onChange={() => handleChangeStatus(item.id)}
+                onChange={() => handleHeightListKeep()}
                 checked={item.isCompleted}
               >
               </S.TaskInputCheckbox>

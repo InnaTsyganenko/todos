@@ -2,7 +2,7 @@ import { FilterItems } from 'const';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { PropsWithChildren } from 'react';
 import { getActiveFilter, getTasks } from 'store/task-operations/selectors';
-import { clearCompleted, filterItems } from 'store/task-operations/task-operations';
+import { clearCompleted, filterItems, setHeightTaskLisk } from 'store/task-operations/task-operations';
 import * as S from './todo-footer.styled';
 
 type TodoFooterProps = PropsWithChildren<{
@@ -16,13 +16,18 @@ const TodoFooter = ({ children, ...props }: TodoFooterProps) => {
 
   const dispatch = useAppDispatch();
 
+  const arrayForRenderCards: number[] = [];
   const countTasksLeft = tasksInList.reduce((acc: number, el) => {
-    if (!el.isCompleted) {acc++;}
+    if (!el.isCompleted) {
+      arrayForRenderCards.push((acc + 1) * 10);
+      acc++;
+    }
     return acc;
   }, 0);
 
   const handleFilterCLick = (valueFilter: string) => {
     if (valueFilter === selectedFilter) {return;}
+    dispatch(setHeightTaskLisk(document.getElementById('task-list')?.clientHeight));
     dispatch(filterItems(valueFilter));
   };
 
@@ -44,6 +49,14 @@ const TodoFooter = ({ children, ...props }: TodoFooterProps) => {
         isSelected
       >Clear completed
       </S.TodoClearCompletedButton>
+
+      {arrayForRenderCards.map((item) => (
+        <S.TodoFooterCardEffect
+          key={item}
+          bottomCoordinate={item}
+        >
+        </S.TodoFooterCardEffect>
+      ))}
     </S.TodoFooterWrapper>
 
   );
